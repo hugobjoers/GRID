@@ -141,7 +141,7 @@ If you use GRID in your research, please cite:
 
 For questions and support:
 - Create an issue on GitHub
-- Contact the development team: Clark Mingxuan Ju (mju@snap.com), Liam Collins (lcollins@snap.com), and Leonardo Neves (lneves@snap.com).
+- Contact the development team: Clark Mingxuan Ju (mju@snap.com), Liam Collins (lcollins2@snap.com), and Leonardo Neves (lneves@snap.com).
 
 ## Bibliography 
 
