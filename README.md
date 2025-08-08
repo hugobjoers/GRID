@@ -122,11 +122,11 @@ python -m src.inference experiment=tiger_inference_flat \
 If you use GRID in your research, please cite:
 
 ```bibtex
-@article{grid,
-  title={Generative Recommendation with Semantic IDs: A Practitioner's Handbook},
-  author={Clark Mingxuan Ju, Liam Collins, Leonardo Neves, Bhuvesh Kumar, Louis Yufeng Wang, Tong Zhao, Neil Shah},
-  journal={arXiv preprint arXiv:2507.22224},
-  year={2025}
+@inproceedings{grid,
+  title     = {Generative Recommendation with Semantic IDs: A Practitioner's Handbook},
+  author    = {Ju, Clark Mingxuan and Collins, Liam and Neves, Leonardo and Kumar, Bhuvesh and Wang, Louis Yufeng and Zhao, Tong and Shah, Neil},
+  booktitle = {Proceedings of the 34th ACM International Conference on Information and Knowledge Management (CIKM)},
+  year      = {2025}
 }
 ```
 
