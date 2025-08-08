@@ -5,8 +5,6 @@ from typing import Any, Dict, List, Optional, Union
 import torch
 import transformers
 from torch.utils.data import IterableDataset
-from torchrec.sparse.jagged_tensor import KeyedJaggedTensor
-from torchrec.streamable import Pipelineable
 
 from src.data.loading.components.iterators import RawDataIterator
 
