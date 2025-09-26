@@ -253,7 +253,7 @@ class LocalPickleWriter(BaseBufferedWriter):
                         process_func["function"](file_path)
                 else:
                     process_func["function"](file_path)
-                if trainer.global_rank != None:
+                if torch.distributed.is_available() and torch.distributed.is_initialized():
                     torch.distributed.barrier()
 
     def _merge_files(self):

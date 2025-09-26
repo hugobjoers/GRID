@@ -1,0 +1,76 @@
+Error executing job with overrides: ['experiment=rkmeans_train_flat', 'data_dir=data/amazon_data/beauty', 'embedding_path=logs/inference/runs/2025-09-16/16-17-06/pickle/merged_predictions_tensor.pt', 'embedding_dim=1024', 'num_hierarchies=3', 'codebook_width=256', '++should_skip_retry=True']
+Traceback (most recent call last):
+  File "/home/vidrond/GRID/src/train.py", line 103, in main
+    job_launcher.launch(function_to_run=train)
+  File "/home/vidrond/GRID/src/utils/restart_job.py", line 330, in launch
+    return function_to_run(cfg=self.cfg)
+  File "/home/vidrond/GRID/src/train.py", line 53, in train
+    pipeline_modules.trainer.fit(
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 539, in fit
+    call._call_and_handle_interrupt(
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 46, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 105, in launch
+    return function(*args, **kwargs)
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 575, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 982, in _run
+    results = self._run_stage()
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 1026, in _run_stage
+    self.fit_loop.run()
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/loops/fit_loop.py", line 208, in run
+    self.setup_data()
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/loops/fit_loop.py", line 275, in setup_data
+    iter(self._data_fetcher)  # creates the iterator inside the fetcher
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/loops/fetchers.py", line 112, in __iter__
+    batch = super().__next__()
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/loops/fetchers.py", line 61, in __next__
+    batch = next(self.iterator)
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/utilities/combined_loader.py", line 341, in __next__
+    out = next(self._iterator)
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/lightning/pytorch/utilities/combined_loader.py", line 78, in __next__
+    out[i] = next(self.iterators[i])
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 708, in __next__
+    data = self._next_data()
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1480, in _next_data
+    return self._process_data(data)
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1505, in _process_data
+    data.reraise()
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/torch/_utils.py", line 733, in reraise
+    raise exception
+RuntimeError: Caught RuntimeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 826, in __next__
+    return self._next_internal()
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 776, in _next_internal
+    ret = gen_dataset_ops.iterator_get_next(
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/tensorflow/python/ops/gen_dataset_ops.py", line 3086, in iterator_get_next
+    _ops.raise_from_not_ok_status(e, name)
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 6002, in raise_from_not_ok_status
+    raise core._status_to_exception(e) from None  # pylint: disable=protected-access
+tensorflow.python.framework.errors_impl.OutOfRangeError: {{function_node __wrapped__IteratorGetNext_output_types_1_device_/job:localhost/replica:0/task:0/device:CPU:0}} End of sequence [Op:IteratorGetNext] name: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vidrond/GRID/src/data/loading/components/iterators.py", line 152, in iterrows
+    self.initialize_feature_description(raw_dataset)
+  File "/home/vidrond/GRID/src/data/loading/components/iterators.py", line 135, in initialize_feature_description
+    sample_record: tf.Tensor = next(iter(raw_dataset))  # type: ignore
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 828, in __next__
+    raise StopIteration
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/vidrond/GRID/venv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 33, in fetch
+    data.append(next(self.dataset_iter))
+  File "/home/vidrond/GRID/src/data/loading/components/dataloading.py", line 145, in __iter__
+    for row_or_batch in self.dataset_to_iterate:
+RuntimeError: generator raised StopIteration
+
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
