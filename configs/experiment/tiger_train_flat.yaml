@@ -288,7 +288,7 @@ trainer:
   accelerator: gpu
   devices: -1
   num_nodes: 1
-  precision: 32-true
+  precision: bf16-mixed
   log_every_n_steps: 100
   val_check_interval: 1600
   deterministic: false
